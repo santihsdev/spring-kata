@@ -1,4 +1,4 @@
-package com.ss.web.app.model;
+package com.ss.web.app.subject;
 
 public class Subject {
   private Long code;
