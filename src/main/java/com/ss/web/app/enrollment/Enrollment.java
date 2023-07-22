@@ -1,5 +1,8 @@
-package com.ss.web.app.model;
+package com.ss.web.app.enrollment;
 
+
+import com.ss.web.app.student.Student;
+import com.ss.web.app.subject.Subject;
 
 public class Enrollment {
   private Subject subject;
@@ -9,7 +12,6 @@ public class Enrollment {
     this.subject = subject;
     this.student = student;
   }
-
 
   public Subject getSubject() {
     return subject;

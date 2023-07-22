@@ -1,8 +1,8 @@
-package com.ss.web.app.repository;
+package com.ss.web.app.enrollment.repository;
 
-import com.ss.web.app.model.Enrollment;
-import com.ss.web.app.model.Student;
-import com.ss.web.app.model.Subject;
+import com.ss.web.app.enrollment.Enrollment;
+import com.ss.web.app.student.Student;
+import com.ss.web.app.subject.Subject;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -39,34 +39,49 @@ public class EnrollmentRepoImpl implements EnrollmentRepo {
   }
 
   @Override
-  public List<Student> listStudents(Subject subject) {
+  public List<Student> listStudents(Long idSubject) {
     return college.stream()
-            .filter(c -> c.getSubject().getCode().equals(subject.getCode()))
+            .filter(c -> equalsCode(c.getSubject(), idSubject))
             .map(Enrollment::getStudent)
             .collect(Collectors.toList());
   }
 
   @Override
-  public List<Subject> listSubjects(Student student) {
+  public List<Subject> listSubjects(Long idStudent) {
     return college.stream()
-            .filter(c -> c.getStudent().getId().equals(student.getId()))
+            .filter(c -> equalsId(c.getStudent(), idStudent))
             .map(Enrollment::getSubject)
             .collect(Collectors.toList());
   }
 
   @Override
-  public List<Student> listStudents(Long id) {
+  public Student getStudentOf(Long idSubject, Long idStudent) {
     return college.stream()
-            .filter(c -> c.getSubject().getCode().equals(id))
-            .map(Enrollment::getStudent)
-            .collect(Collectors.toList());
+              .filter(c -> equalsCodeAndId(c, idSubject, idStudent)
+              )
+              .map(Enrollment::getStudent)
+              .findFirst()
+              .orElse(null);
   }
 
   @Override
-  public List<Subject> listSubjects(Long id) {
+  public Subject getSubjectOf(Long idStudent, Long idSubject) {
     return college.stream()
-            .filter(c -> c.getStudent().getId().equals(id))
+            .filter(c -> equalsCodeAndId(c, idSubject, idStudent)
+            )
             .map(Enrollment::getSubject)
-            .collect(Collectors.toList());
+            .findFirst()
+            .orElse(null);
+  }
+
+  private boolean equalsCodeAndId(Enrollment c, Long code, Long id) {
+    return equalsId(c.getStudent(), id) && equalsCode(c.getSubject(), code);
+  }
+  private boolean equalsCode(Subject subject, Long code) {
+    return subject.getCode().equals(code);
+  }
+
+  private boolean equalsId(Student student, Long id) {
+    return student.getId().equals(id);
   }
 }
