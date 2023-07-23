@@ -10,15 +10,19 @@ import java.util.List;
 
 @Service
 public class EnrollmentServiceImpl implements EnrollmentService {
-  @Autowired
-  EnrollmentRepo collegeRepo;
-  @Override
-  public List<Student> findAllStudents(Long id) {
-    return collegeRepo.listStudents(id);
-  }
+    private final EnrollmentRepo collegeRepo;
 
-  @Override
-  public List<Subject> findAllSubjects(Long id) {
-    return collegeRepo.listSubjects(id);
-  }
+    public EnrollmentServiceImpl(EnrollmentRepo collegeRepo) {
+        this.collegeRepo = collegeRepo;
+    }
+
+    @Override
+    public List<Student> findAllStudents(Long id) {
+        return collegeRepo.listStudents(id);
+    }
+
+    @Override
+    public List<Subject> findAllSubjects(Long id) {
+        return collegeRepo.listSubjects(id);
+    }
 }

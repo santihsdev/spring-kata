@@ -26,7 +26,6 @@ class StudentServiceImplTest {
   }
     @Test
     public void findAll() {
-        //Arrange
         StudentRepo repo = mock(StudentRepo.class);
         StudentServiceImpl studentServiceImpl = new StudentServiceImpl(repo);
         Student student1 = new Student(1L, "Sho", "Test");
