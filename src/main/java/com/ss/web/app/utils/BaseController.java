@@ -1,15 +1,17 @@
 package com.ss.web.app.utils;
 
 import com.ss.web.app.utils.service.IService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-public class BaseController<T> {
-    IService<T> service;
+public class BaseController<T, S extends IService<T>> {
+    S service;
+
+    public BaseController(S service) {
+        this.service = service;
+    }
 
     @GetMapping
-    public T[] getAll() {
+    public Object[] getAll() {
         return service.findAll();
     }
 
@@ -29,8 +31,8 @@ public class BaseController<T> {
     }
 
     @DeleteMapping("/{id}")
-    public T delete(@PathVariable Long idStudent) {
-        return service.delete(idStudent);
+    public T delete(@PathVariable Long id) {
+        return service.delete(id);
     }
 
 }

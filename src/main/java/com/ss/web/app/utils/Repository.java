@@ -5,7 +5,7 @@ import java.util.List;
 public interface Repository<T> {
     T save(T value);
 
-    T[] findAll();
+    Object[] findAll();
 
     T edit(Long id, T newValue);
 

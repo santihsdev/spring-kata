@@ -5,5 +5,5 @@ public interface IService<T> {
     T get(Long id);
     T update(Long id, T newValue);
     T delete(Long id);
-    T[] findAll();
+    Object[] findAll();
 }

@@ -2,12 +2,11 @@ package com.ss.web.app.utils.service;
 
 import com.ss.web.app.utils.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-@Service
-public class ServiceImpl<T> implements IService<T> {
-    @Autowired
-    private Repository<T> repo;
-    public ServiceImpl(Repository<T> repository) {
+
+public class ServiceImpl<T, R extends Repository<T>> implements IService<T> {
+
+    protected R repo;
+    public ServiceImpl(R repository) {
         this.repo = repository;
     }
     @Override
@@ -31,7 +30,7 @@ public class ServiceImpl<T> implements IService<T> {
     }
 
     @Override
-    public T[] findAll() {
+    public Object[] findAll() {
         return repo.findAll();
     }
 }

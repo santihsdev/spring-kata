@@ -1,13 +1,14 @@
 package com.ss.web.app.subject.repository;
 
 import com.ss.web.app.subject.Subject;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-
+@Qualifier("SubjectRepoImpl")
 public class SubjectRepoImpl implements SubjectRepo {
     private final Map<Long, Subject> subjectMap;
 
@@ -21,8 +22,8 @@ public class SubjectRepoImpl implements SubjectRepo {
     }
 
     @Override
-    public Subject[] findAll() {
-        return (Subject[]) subjectMap.values().toArray();
+    public Object[] findAll() {
+        return subjectMap.values().toArray();
     }
 
     @Override
