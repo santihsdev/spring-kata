@@ -1,6 +1,7 @@
 package com.ss.web.app.student.repository;
 
 import com.ss.web.app.student.Student;
+import com.ss.web.app.utils.Data;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +13,7 @@ public class StudentRepoImpl implements StudentRepo {
   private final Map<Long, Student> studentMap;
 
   public StudentRepoImpl() {
-    studentMap = new HashMap<>();
+    studentMap = Data.getStudentMap();
     studentMap.put(1L,new Student(1L, "Sho", "Test"));
     studentMap.put(2L,new Student(2L, "Auto", "Test"));
     studentMap.put(3L,new Student(3L, "Curl", "Test"));

@@ -3,6 +3,7 @@ package com.ss.web.app.enrollment.repository;
 import com.ss.web.app.enrollment.Enrollment;
 import com.ss.web.app.student.Student;
 import com.ss.web.app.subject.Subject;
+import com.ss.web.app.utils.Data;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -15,11 +16,11 @@ public class EnrollmentRepoImpl implements EnrollmentRepo {
   private List<Enrollment> college;
 
   public EnrollmentRepoImpl() {
-    college = fillCollege();
+    college = Data.getCollege();
   }
 
   private List<Enrollment> fillCollege() {
-    List<Enrollment> result = new ArrayList<>();
+    List<Enrollment> result = Data.getCollege();
     Subject math = new Subject(101L, "Math", "It's math");
     Subject programming = new Subject(103L, "Programming", "It's programming");
     Subject physics = new Subject(102L, "Physics", "It's physics");
@@ -34,7 +35,6 @@ public class EnrollmentRepoImpl implements EnrollmentRepo {
     result.add(new Enrollment(programming, second));
     result.add(new Enrollment(physics, second));
     result.add(new Enrollment(physics, third));
-
     return result;
   }
 
@@ -74,6 +74,19 @@ public class EnrollmentRepoImpl implements EnrollmentRepo {
             .orElse(null);
   }
 
+  @Override
+  public Enrollment enroll(Long idStudent, Long idSubject) {
+    var students = Data.getStudentMap();
+    var subjects = Data.getSubjectMap();
+    if (students.containsKey(idStudent) && subjects.containsKey(idStudent) ) {
+      Enrollment enrollment = new Enrollment(
+              subjects.get(idSubject),
+              students.get(idStudent));
+      Data.getCollege().add(enrollment);
+      return enrollment;
+    }
+    return null;
+  }
   private boolean equalsCodeAndId(Enrollment c, Long code, Long id) {
     return equalsId(c.getStudent(), id) && equalsCode(c.getSubject(), code);
   }
