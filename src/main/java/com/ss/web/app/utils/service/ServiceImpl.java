@@ -1,7 +1,6 @@
 package com.ss.web.app.utils.service;
 
 import com.ss.web.app.utils.Repository;
-import org.springframework.stereotype.Service;
 
 public class ServiceImpl<T, R extends Repository<T>> implements IService<T> {
 
