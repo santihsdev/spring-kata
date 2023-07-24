@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/enrollment")
 public class EnrollmentController {
   @Autowired
-  private EnrollmentService enrollmentService;
+  EnrollmentService enrollmentService;
 
   @GetMapping("/student/{id}/class")
   public List<Subject> getSubjects(@PathVariable Long id) {
