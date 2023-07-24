@@ -8,7 +8,4 @@ import java.util.List;
 public interface EnrollmentService {
   List<Student> findAllStudents(Long id);
   List<Subject> findAllSubjects(Long id);
-
-
-
 }
