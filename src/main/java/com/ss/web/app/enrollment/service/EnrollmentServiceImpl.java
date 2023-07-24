@@ -4,7 +4,6 @@ import com.ss.web.app.enrollment.Enrollment;
 import com.ss.web.app.student.Student;
 import com.ss.web.app.subject.Subject;
 import com.ss.web.app.enrollment.repository.EnrollmentRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

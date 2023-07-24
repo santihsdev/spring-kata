@@ -14,9 +14,6 @@ public class StudentRepoImpl implements StudentRepo {
 
   public StudentRepoImpl() {
     studentMap = Data.getStudentMap();
-    studentMap.put(1L,new Student(1L, "Sho", "Test"));
-    studentMap.put(2L,new Student(2L, "Auto", "Test"));
-    studentMap.put(3L,new Student(3L, "Curl", "Test"));
   }
 
   @Override

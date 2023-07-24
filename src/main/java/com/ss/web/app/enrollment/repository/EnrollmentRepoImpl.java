@@ -6,7 +6,6 @@ import com.ss.web.app.subject.Subject;
 import com.ss.web.app.utils.Data;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,25 +16,6 @@ public class EnrollmentRepoImpl implements EnrollmentRepo {
 
   public EnrollmentRepoImpl() {
     college = Data.getCollege();
-  }
-
-  private List<Enrollment> fillCollege() {
-    List<Enrollment> result = Data.getCollege();
-    Subject math = new Subject(101L, "Math", "It's math");
-    Subject programming = new Subject(103L, "Programming", "It's programming");
-    Subject physics = new Subject(102L, "Physics", "It's physics");
-
-    Student first = new Student(201L, "Next", "Test");
-    Student second = new Student(202L, "Curl", "Test");
-    Student third = new Student(203L, "Sho", "Test");
-
-    result.add(new Enrollment(math, first));
-    result.add(new Enrollment(math, third));
-    result.add(new Enrollment(programming, first));
-    result.add(new Enrollment(programming, second));
-    result.add(new Enrollment(physics, second));
-    result.add(new Enrollment(physics, third));
-    return result;
   }
 
   @Override

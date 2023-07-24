@@ -14,9 +14,6 @@ public class SubjectRepoImpl implements SubjectRepo {
 
     public SubjectRepoImpl() {
         this.subjectMap = Data.getSubjectMap();
-        this.subjectMap.put(1L, new Subject(1L, "Math", "New Value"));
-        this.subjectMap.put(2L, new Subject(2L, "Lite", "New Value"));
-        this.subjectMap.put(3L, new Subject(3L, "Social", "New Value"));
     }
 
     @Override

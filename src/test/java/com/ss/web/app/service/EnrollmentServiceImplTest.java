@@ -5,10 +5,7 @@ import com.ss.web.app.enrollment.repository.EnrollmentRepo;
 import com.ss.web.app.enrollment.service.EnrollmentService;
 import com.ss.web.app.enrollment.service.EnrollmentServiceImpl;
 import com.ss.web.app.student.Student;
-import com.ss.web.app.student.repository.StudentRepo;
-import com.ss.web.app.student.service.StudentServiceImpl;
 import com.ss.web.app.subject.Subject;
-import com.ss.web.app.subject.repository.SubjectRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
