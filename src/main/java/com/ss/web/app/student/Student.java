@@ -1,4 +1,4 @@
-package com.ss.web.app.model;
+package com.ss.web.app.student;
 
 import java.util.Objects;
 
